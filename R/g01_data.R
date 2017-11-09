@@ -37,9 +37,9 @@ NULL
 
 #' census_indigenous
 #'
-#' Location of where people where on counting night of the 2016 Australian
-#' census. Data is identified at the most granular statistical level (SA1) that
-#' the Australian Bureau of Statistics publishes data to.
+#' The counts of people who identify as indigenous and their heritage. Data is
+#' identified at the most granular statistical level (SA1) that the Australian
+#' Bureau of Statistics publishes data to.
 #'
 #' @format A data frame / `data.table`  with four variables:
 #' \describe{
