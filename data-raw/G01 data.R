@@ -82,3 +82,19 @@ census_citizen <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
                                 count = value)]
 devtools::use_data(census_citizen, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
+
+# Attending education -----------------------------------------------------
+
+dt_tmp <- dt_g01[variable %like% "^Age_psns" & value > 0]
+
+# assign age
+dt_tmp[variable %like% "^Age_psns_att_educ_inst", age :=
+         gsub("_", "-", str_mid(variable, 24, from_end = 2))]
+dt_tmp[variable %like% "^Age_psns_att_edu_inst", age :=
+         gsub("_", "-", str_mid(variable, 23, from_end = 2))]
+dt_tmp[variable %like% "^Age_psns_att_edu_inst_25", age := "25+"]
+
+census_attending_education <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
+                                count = value)]
+devtools::use_data(census_attending_education, overwrite = TRUE, compress = "xz")
+rm(dt_tmp)
