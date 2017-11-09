@@ -98,3 +98,20 @@ census_attending_education <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
                                 count = value)]
 devtools::use_data(census_attending_education, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
+
+# Highest school year -----------------------------------------------------
+
+dt_tmp <- dt_g01[variable %like% "^High_yr" & value > 0]
+
+# assign highest school year
+dt_tmp[variable %like% "Yr_1", highest_school_year :=
+         gsub("_", "-", str_mid(variable, 22, from_end = 5))]
+dt_tmp[variable %like% "Yr_9", highest_school_year := "9"]
+dt_tmp[variable %like% "Yr_8", highest_school_year := "8 or below"]
+dt_tmp[variable %like% "D_n_g", highest_school_year := "Did not go to school"]
+
+census_highest_schooling <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
+                                       highest_school_year, count = value)]
+devtools::use_data(census_highest_schooling, overwrite = TRUE, compress = "xz")
+rm(dt_tmp)
+

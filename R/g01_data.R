@@ -53,7 +53,7 @@ NULL
 #'
 "census_indigenous"
 
-#' census_count_birthplace
+#' census_birthplace
 #'
 #' The birthplace of the person being counted in the 2016 Australian census.
 #' Data is identified at the most granular statistical level (SA1) that the
@@ -67,9 +67,9 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_count_birthplace"
+"census_birthplace"
 
-#' census_count_citizen
+#' census_citizen
 #'
 #' The count of citizens in the 2016 Australian census.
 #' Data is identified at the most granular statistical level (SA1) that the
@@ -82,7 +82,7 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_count_citizen"
+"census_citizen"
 
 #' census_attending_education
 #'
@@ -101,3 +101,21 @@ NULL
 #' }
 #'
 "census_attending_education"
+
+#' census_highest_schooling
+#'
+#' The highest level of schooling achieved. It does not include tertiary
+#' education. Data is identified at the most granular statistical level (SA1)
+#' that the Australian Bureau of Statistics publishes data to.
+#'
+#' This data set does include total population counts for Australia.
+#'
+#' @format A data frame / `data.table`  with four variables:
+#' \describe{
+#' \item{\code{SA1_7DIGITCODE_2016}}{A 7 digit identifier for the Statistical Area 1 (SA1)}
+#' \item{\code{gender}}{Gender}
+#' \item{\code{highest_school_year}}{Highest year of schooling education}
+#' \item{\code{count}}{The count of people}
+#' }
+#'
+"census_highest_schooling"
