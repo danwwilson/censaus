@@ -52,10 +52,24 @@ dt_tmp <- dt_g01[variable %like% "Indig" & value > 0]
 # assign indigenous heritage
 dt_tmp[variable %like% "Aboriginal", heritage := "Aboriginal"]
 dt_tmp[variable %like% "Torres_Strait", heritage := "Torres Strait Islander"]
-dt_tmp[variable %like% "Indig_Bth", heritage := "Aboriginal & Torres Strait Islander"]
+dt_tmp[variable %like% "Indig_Bth",
+       heritage := "Aboriginal & Torres Strait Islander"]
 dt_tmp[variable %like% "Indigenous_P_Tot", heritage := "Total"]
 
 census_indigenous <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, heritage,
                                 count = value)]
 devtools::use_data(census_indigenous, overwrite = TRUE, compress = "xz")
+rm(dt_tmp)
+
+# Birthplace --------------------------------------------------------------
+
+dt_tmp <- dt_g01[variable %like% "^Birthplace" & value > 0]
+
+# assign birthplace
+dt_tmp[variable %like% "Australia", birthplace := "Australia"]
+dt_tmp[variable %like% "Elsewhere", birthplace := "Elsewhere"]
+
+census_birthplace <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, birthplace,
+                                count = value)]
+devtools::use_data(census_birthplace, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
