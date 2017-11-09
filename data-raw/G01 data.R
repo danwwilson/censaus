@@ -73,3 +73,12 @@ census_birthplace <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, birthplace,
                                 count = value)]
 devtools::use_data(census_birthplace, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
+
+# Citizen -----------------------------------------------------------------
+
+dt_tmp <- dt_g01[variable %like% "^Australian_citizen" & value > 0]
+
+census_citizen <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
+                                count = value)]
+devtools::use_data(census_citizen, overwrite = TRUE, compress = "xz")
+rm(dt_tmp)

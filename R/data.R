@@ -69,3 +69,17 @@ NULL
 #'
 "census_count_birthplace"
 
+#' census_count_citizen
+#'
+#' The count of citizens in the 2016 Australian census.
+#' Data is identified at the most granular statistical level (SA1) that the
+#' Australian Bureau of Statistics publishes data to.
+#'
+#' @format A data frame / `data.table`  with three variables:
+#' \describe{
+#' \item{\code{SA1_7DIGITCODE_2016}}{A 7 digit identifier for the Statistical Area 1 (SA1)}
+#' \item{\code{gender}}{Gender}
+#' \item{\code{count}}{The count of people}
+#' }
+#'
+"census_count_citizen"
