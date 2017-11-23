@@ -12,3 +12,5 @@
     * `census_g01_highest_schooling`: The highest recognised level of schooling for people over 15.
 * Added _G02 - Selected Medians and Averages_. Modified all periods to weekly rather than the mix of monthly / weekly provided in original ABS data.
     * `census_g02_all`: Selected medians and averages relating to age, income, housing expenses and household size.
+* Added _G05 - Registred Marital Status by Age by Sex_
+    * `census_g05_marital_status`: A dataset with the age, gender and registered marital status.

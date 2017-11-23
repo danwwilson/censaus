@@ -34,6 +34,9 @@ The following datasets are recorded at the SLA1 level of detail. The original ce
 
 * `census_g02_all`: Selected medians and averages relating to age, income, housing expenses and household size.
 
+### G05 - Registred Marital Status by Age by Sex
+* `census_g05_marital_status`: A dataset with the age, gender and registered marital status.
+
 More information about Australian statistical geopgraphies can be found [here](http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS))
 
 ## Attribution
