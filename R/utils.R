@@ -14,7 +14,7 @@ str_mid <- function(x, start, length, from_end) {
     stop("str_mid requires either the length or from_end paramater")
 
   if (!missing(length))
-    mid <- substr(x, start, start + length)
+    mid <- substr(x, start, start + length - 1)
 
   if (!missing(from_end))
     mid <- substr(x, start, nchar(x) - from_end)
