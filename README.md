@@ -40,6 +40,9 @@ The following datasets are recorded at the SLA1 level of detail. The original ce
 ### G06 - Social Marital Status by Age by Sex
 * `census_g06_marital_status`: A dataset with the age, gender and social marital status.
 
+### G32 - Dwelling Structure
+* `census_g32_dwelling_structure`: A dataset with information about the number of dwellings in an SLA1 area and the number of people resident in the dwellings.
+
 More information about Australian statistical geographies can be found [here](http://www.abs.gov.au/websitedbs/D3310114.nsf/home/Australian+Statistical+Geography+Standard+(ASGS))
 
 ## Attribution

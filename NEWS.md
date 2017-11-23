@@ -16,3 +16,5 @@
     * `census_g05_marital_status`: A dataset with the age, gender and registered marital status.
 * Added _G06 - Social Marital Status by Age by Sex_
     * `census_g06_marital_status`: A dataset with the age, gender and social marital status.
+* Added _G32 - Dwelling Structre_
+    * `census_g32_dwelling_structure`: A dataset with information about the number of dwellings in an SLA1 area and the number of people resident in the dwellings.
