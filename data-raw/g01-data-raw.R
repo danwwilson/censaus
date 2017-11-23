@@ -1,4 +1,4 @@
-# Import General Community Profile (GCP) data
+# Import G01 - Selected Person Characteristics by Sex
 
 library(data.table)
 
@@ -26,9 +26,9 @@ dt_tmp[variable %like% "^Age_", age :=
          gsub("_", "-", str_mid(variable, 5, from_end = 5))]
 dt_tmp[variable %like% "^Age_85ov", age := "85+"]
 
-census_age_gender <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
+census_g01_age_gender <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
                                 count = value)]
-devtools::use_data(census_age_gender, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_age_gender, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Count location ----------------------------------------------------------
@@ -40,9 +40,9 @@ dt_tmp <- dt_g01[(variable %like% "^Counted_Census" |
 dt_tmp[variable %like% "home", location := "Completed at home"]
 dt_tmp[variable %like% "Ewhere", location := "Completed elsewhere in Aust."]
 
-census_count_location <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, location,
+census_g01_count_location <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, location,
                                     count = value)]
-devtools::use_data(census_count_location, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_count_location, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Indigenous Australians --------------------------------------------------
@@ -56,9 +56,9 @@ dt_tmp[variable %like% "Indig_Bth",
        heritage := "Aboriginal & Torres Strait Islander"]
 dt_tmp[variable %like% "Indigenous_P_Tot", heritage := "Total"]
 
-census_indigenous <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, heritage,
+census_g01_indigenous <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, heritage,
                                 count = value)]
-devtools::use_data(census_indigenous, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_indigenous, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Birthplace --------------------------------------------------------------
@@ -69,18 +69,18 @@ dt_tmp <- dt_g01[variable %like% "^Birthplace" & value > 0]
 dt_tmp[variable %like% "Australia", birthplace := "Australia"]
 dt_tmp[variable %like% "Elsewhere", birthplace := "Elsewhere"]
 
-census_birthplace <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, birthplace,
+census_g01_birthplace <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, birthplace,
                                 count = value)]
-devtools::use_data(census_birthplace, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_birthplace, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Citizen -----------------------------------------------------------------
 
 dt_tmp <- dt_g01[variable %like% "^Australian_citizen" & value > 0]
 
-census_citizen <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
+census_g01_citizen <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
                                 count = value)]
-devtools::use_data(census_citizen, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_citizen, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Attending education -----------------------------------------------------
@@ -94,9 +94,9 @@ dt_tmp[variable %like% "^Age_psns_att_edu_inst", age :=
          gsub("_", "-", str_mid(variable, 23, from_end = 2))]
 dt_tmp[variable %like% "^Age_psns_att_edu_inst_25", age := "25+"]
 
-census_attending_education <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
+census_g01_attending_education <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
                                 count = value)]
-devtools::use_data(census_attending_education, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_attending_education, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Highest school year -----------------------------------------------------
@@ -110,8 +110,8 @@ dt_tmp[variable %like% "Yr_9", highest_school_year := "9"]
 dt_tmp[variable %like% "Yr_8", highest_school_year := "8 or below"]
 dt_tmp[variable %like% "D_n_g", highest_school_year := "Did not go to school"]
 
-census_highest_schooling <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
+census_g01_highest_schooling <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
                                        highest_school_year, count = value)]
-devtools::use_data(census_highest_schooling, overwrite = TRUE, compress = "xz")
+devtools::use_data(census_g01_highest_schooling, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 

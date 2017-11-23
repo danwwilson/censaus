@@ -1,7 +1,7 @@
 #' @importFrom data.table data.table
 NULL
 
-#' census_age_gender
+#' census_g01_age_gender
 #'
 #' Age and gender data from the 2016 Australian census. Data is identified at
 #' the most granular statistical level (SA1) that the Australian Bureau of
@@ -17,9 +17,9 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_age_gender"
+"census_g01_age_gender"
 
-#' census_count_location
+#' census_g01_count_location
 #'
 #' Location of where people where on counting night of the 2016 Australian
 #' census. Data is identified at the most granular statistical level (SA1) that
@@ -33,9 +33,9 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_count_location"
+"census_g01_count_location"
 
-#' census_indigenous
+#' census_g01_indigenous
 #'
 #' The counts of people who identify as indigenous and their heritage. Data is
 #' identified at the most granular statistical level (SA1) that the Australian
@@ -51,7 +51,7 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_indigenous"
+"census_g01_indigenous"
 
 #' census_birthplace
 #'
@@ -67,9 +67,9 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_birthplace"
+"census_g01_birthplace"
 
-#' census_citizen
+#' census_g01_citizen
 #'
 #' The count of citizens in the 2016 Australian census.
 #' Data is identified at the most granular statistical level (SA1) that the
@@ -82,9 +82,9 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_citizen"
+"census_g01_citizen"
 
-#' census_attending_education
+#' census_g01_attending_education
 #'
 #' Age of people attending an educational institute. Data is identified at
 #' the most granular statistical level (SA1) that the Australian Bureau of
@@ -100,9 +100,9 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_attending_education"
+"census_g01_attending_education"
 
-#' census_highest_schooling
+#' census_g01_highest_schooling
 #'
 #' The highest level of schooling achieved. It does not include tertiary
 #' education. Data is identified at the most granular statistical level (SA1)
@@ -118,4 +118,4 @@ NULL
 #' \item{\code{count}}{The count of people}
 #' }
 #'
-"census_highest_schooling"
+"census_g01_highest_schooling"
