@@ -18,7 +18,7 @@ dt_g01[gender == "P", gender := "All persons"]
 # Age & Gender ------------------------------------------------------------
 
 # filter for age data
-dt_tmp <- dt_g01[(variable %like% "^Tot_P" | variable %like% "^Age_\\d") &
+dt_tmp <- dt_g01[(variable %like% "^Age_\\d") & gender != "All persons" &
                    value > 0]
 
 # assign age
@@ -34,7 +34,8 @@ rm(dt_tmp)
 # Count location ----------------------------------------------------------
 
 dt_tmp <- dt_g01[(variable %like% "^Counted_Census" |
-                   variable %like% "^Count_Census") & value > 0]
+                   variable %like% "^Count_Census") & gender != "All persons" &
+                   value > 0]
 
 # assign location
 dt_tmp[variable %like% "home", location := "Completed at home"]
@@ -47,7 +48,7 @@ rm(dt_tmp)
 
 # Indigenous Australians --------------------------------------------------
 
-dt_tmp <- dt_g01[variable %like% "Indig" & value > 0]
+dt_tmp <- dt_g01[variable %like% "Indig" & gender != "All persons" & value > 0]
 
 # assign indigenous heritage
 dt_tmp[variable %like% "Aboriginal", heritage := "Aboriginal"]
@@ -56,14 +57,15 @@ dt_tmp[variable %like% "Indig_Bth",
        heritage := "Aboriginal & Torres Strait Islander"]
 dt_tmp[variable %like% "Indigenous_P_Tot", heritage := "Total"]
 
-census_g01_indigenous <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, heritage,
+census_g01_indigenous <- dt_tmp[heritage != "Total", .(SA1_7DIGITCODE_2016, gender, heritage,
                                 count = value)]
 devtools::use_data(census_g01_indigenous, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 
 # Birthplace --------------------------------------------------------------
 
-dt_tmp <- dt_g01[variable %like% "^Birthplace" & value > 0]
+dt_tmp <- dt_g01[variable %like% "^Birthplace" & gender != "All persons" &
+                   value > 0]
 
 # assign birthplace
 dt_tmp[variable %like% "Australia", birthplace := "Australia"]
@@ -76,7 +78,8 @@ rm(dt_tmp)
 
 # Citizen -----------------------------------------------------------------
 
-dt_tmp <- dt_g01[variable %like% "^Australian_citizen" & value > 0]
+dt_tmp <- dt_g01[variable %like% "^Australian_citizen" &
+                   gender != "All persons" & value > 0]
 
 census_g01_citizen <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender,
                                 count = value)]
@@ -85,7 +88,8 @@ rm(dt_tmp)
 
 # Attending education -----------------------------------------------------
 
-dt_tmp <- dt_g01[variable %like% "^Age_psns" & value > 0]
+dt_tmp <- dt_g01[variable %like% "^Age_psns" & gender != "All persons" &
+                   value > 0]
 
 # assign age
 dt_tmp[variable %like% "^Age_psns_att_educ_inst", age :=
@@ -101,7 +105,8 @@ rm(dt_tmp)
 
 # Highest school year -----------------------------------------------------
 
-dt_tmp <- dt_g01[variable %like% "^High_yr" & value > 0]
+dt_tmp <- dt_g01[variable %like% "^High_yr" & gender != "All persons" &
+                   value > 0]
 
 # assign highest school year
 dt_tmp[variable %like% "Yr_1", highest_school_year :=
