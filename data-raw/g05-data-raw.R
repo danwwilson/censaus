@@ -30,7 +30,8 @@ dt_tmp[variable %like% "Divorced", marital_status := "Divorced"]
 dt_tmp[variable %like% "Widowed", marital_status := "Widowed"]
 
 # create dataset
-census_g05_marital_status <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
-                                        marital_status, count = value)]
+census_g05_marital_status <- dt_tmp[, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
+                                        gender, age, marital_status,
+                                        count = value)]
 devtools::use_data(census_g05_marital_status, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)

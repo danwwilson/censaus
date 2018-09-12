@@ -28,7 +28,8 @@ dt_tmp[variable %like% "de_facto", marital_status := "De Facto Marriage"]
 dt_tmp[variable %like% "Not_married", marital_status := "Not_married"]
 
 # create dataset
-census_g06_marital_status <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
-                                        marital_status, count = value)]
+census_g06_marital_status <- dt_tmp[, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
+                                        gender, age, marital_status,
+                                        count = value)]
 devtools::use_data(census_g06_marital_status, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)

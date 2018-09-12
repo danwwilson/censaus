@@ -46,8 +46,8 @@ dt_tmp[variable %like% "3_sty", storeys := "3"]
 dt_tmp[variable %like% "4_m_sty", storeys := ">=4"]
 dt_tmp[is.na(storeys), storeys := "Not stated"]
 
-dt_tmp2 <- dt_tmp[, .(SA1_7DIGITCODE_2016, type, occupy, dwelling_type,
-                      storeys, count = value)]
+dt_tmp2 <- dt_tmp[, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
+                      type, occupy, dwelling_type, storeys, count = value)]
 
 census_g32_dwelling_structure <-
   dcast(dt_tmp2, SA1_7DIGITCODE_2016 + occupy + dwelling_type + storeys ~ type,

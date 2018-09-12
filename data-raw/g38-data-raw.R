@@ -33,8 +33,9 @@ dt_38[grepl("No(|f)B_NS", variable), bedrooms := "Not Stated"]
 
 dt_38 <- dt_38[!is.na(bedrooms)]
 
-census_g38_dwelling_structure <- dt_38[value > 0, .(SA1_7DIGITCODE_2016, structure, bedrooms,
-                                            count = value)]
+census_g38_dwelling_structure <- dt_38[value > 0, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
+                                                    structure, bedrooms,
+                                                    count = value)]
 devtools::use_data(census_g38_dwelling_structure, overwrite = TRUE, compress = "xz")
-rm(dt_tmp)
+
 

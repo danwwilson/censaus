@@ -33,7 +33,8 @@ dt_tmp[variable %like% "^Age_yr_", age :=
          gsub("\\D", "", variable)]
 dt_tmp[variable %like% "^Age_yr_100", age := "100+"]
 
-census_g04_age_gender <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
+census_g04_age_gender <- dt_tmp[, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
+                                    gender, age,
                                     count = value)]
 devtools::use_data(census_g04_age_gender, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
@@ -50,8 +51,9 @@ dt_tmp[variable %like% "^Age_yr_", age :=
          gsub("_", "-", str_mid(variable, 8, from_end = 2))]
 dt_tmp[variable %like% "^Age_yr_100", age := "100+"]
 
-census_g04_age_gender_grouped <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
-                                    count = value)]
+census_g04_age_gender_grouped <- dt_tmp[, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
+                                            gender, age,
+                                            count = value)]
 devtools::use_data(census_g04_age_gender_grouped, overwrite = TRUE, compress = "xz")
 rm(dt_tmp)
 

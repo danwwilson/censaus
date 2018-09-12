@@ -7,7 +7,7 @@ path <- "data-raw/2016_GCP_SA1_for_AUS_short-header/2016 Census GCP Statistical 
 dt_g02 <- fread(paste0(path, "2016Census_G02_AUS_SA1.csv"))
 
 census_g02_all <-
-  dt_g02[, .(SA1_7DIGITCODE_2016,
+  dt_g02[, .(SA1_7DIGITCODE_2016 = as.character(SA1_7DIGITCODE_2016),
              median_age_persons = Median_age_persons,
              median_mortgage_repayment_weekly =
                Median_mortgage_repay_monthly * 12 / 52,
