@@ -1,3 +1,9 @@
+# censaus 0.1.01 - 2018-09-12
+
+* Added _G04 - Age by Sex_. 
+    * `census_g04_age_gender`: A dataset of age / gender by individual year to age 79
+    * `census_g04_age_gender_grouped`: A dataset of age and gender data by 5 year age bands to 100
+
 # censaus 0.1.0
 
 ## New Stuff
