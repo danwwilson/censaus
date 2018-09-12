@@ -1,57 +1,37 @@
-# Import G04 - Age by Sex
+#' census_g04_age_gender
+#'
+#' Age and gender data from the 2016 Australian census. Data is identified at
+#' the most granular statistical level (SA1) that the Australian Bureau of
+#' Statistics publishes data to.
+#'
+#' This dataset differs from \link[censaus]{census_g01_age_gender} in that it
+#' reports on individual ages from 0-79
+#'
+#' @format A data frame / `data.table`  with four variables:
+#' \describe{
+#' \item{\code{SA1_7DIGITCODE_2016}}{A 7 digit identifier for the Statistical Area 1 (SA1)}
+#' \item{\code{gender}}{Gender}
+#' \item{\code{age}}{Age in individual years to 79}
+#' \item{\code{count}}{The count of people}
+#' }
+#'
+"census_g04_age_gender"
 
-library(data.table)
-
-path <- "data-raw/2016_GCP_SA1_for_AUS_short-header/2016 Census GCP Statistical Area 1 for AUST/"
-
-dt_g04a <- melt(fread(paste0(path, "2016Census_G04A_AUS_SA1.csv")),
-               id.vars = "SA1_7DIGITCODE_2016", variable.factor = FALSE)
-dt_g04b <- melt(fread(paste0(path, "2016Census_G04B_AUS_SA1.csv")),
-                id.vars = "SA1_7DIGITCODE_2016", variable.factor = FALSE)
-
-
-dt_g04 <- rbind(dt_g04a, dt_g04b)
-
-# assign gender for all records
-
-# assign gender
-dt_g04[, gender := str_right(variable, 1)]
-dt_g04[gender == "M", gender := "Male"]
-dt_g04[gender == "F", gender := "Female"]
-dt_g04[gender == "P", gender := "All persons"]
-
-# Age & Gender (individual years) -----------------------------------------
-
-# filter for age data
-dt_tmp <- dt_g04[(variable %like% "^Age_yr_\\d") & gender != "All persons" &
-                   value > 0]
-dt_tmp <- dt_tmp[!(grepl("\\d(|\\d)_\\d(|\\d)", variable) |
-                     grepl("\\d\\d\\d", variable))]
-
-# assign age
-dt_tmp[variable %like% "^Age_yr_", age :=
-         gsub("\\D", "", variable)]
-dt_tmp[variable %like% "^Age_yr_100", age := "100+"]
-
-census_g04_age_gender <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
-                                    count = value)]
-devtools::use_data(census_g04_age_gender, overwrite = TRUE, compress = "xz")
-rm(dt_tmp)
-
-# Age & Gender (bandings of years) ----------------------------------------
-# filter for age data
-dt_tmp <- dt_g04[((variable %like% "^Age_yr_\\d(|\\d)_\\d") |
-                    (variable %like% "^Age_yr_\\d\\d\\d")) &
-                   gender != "All persons" &
-                   value > 0]
-
-# assign age
-dt_tmp[variable %like% "^Age_yr_", age :=
-         gsub("_", "-", str_mid(variable, 8, from_end = 2))]
-dt_tmp[variable %like% "^Age_yr_100", age := "100+"]
-
-census_g04_age_gender_grouped <- dt_tmp[, .(SA1_7DIGITCODE_2016, gender, age,
-                                    count = value)]
-devtools::use_data(census_g04_age_gender_grouped, overwrite = TRUE, compress = "xz")
-rm(dt_tmp)
-
+#' census_g04_age_gender_grouped
+#'
+#' Age and gender data from the 2016 Australian census. Data is identified at
+#' the most granular statistical level (SA1) that the Australian Bureau of
+#' Statistics publishes data to.
+#'
+#' This dataset differs from \link[censaus]{census_g01_age_gender} in that it
+#' reports in five year age bands all the way to 100 instead of to 85 and over.
+#'
+#' @format A data frame / `data.table`  with four variables:
+#' \describe{
+#' \item{\code{SA1_7DIGITCODE_2016}}{A 7 digit identifier for the Statistical Area 1 (SA1)}
+#' \item{\code{gender}}{Gender}
+#' \item{\code{age}}{Age broken into age bands}
+#' \item{\code{count}}{The count of people}
+#' }
+#'
+"census_g04_age_gender_grouped"

@@ -1,7 +1,7 @@
 Package: censaus
 Type: Package
 Title: 2016 Australian Census Data
-Version: 0.1.0
+Version: 0.1.01
 Authors@R: c(
     person("Daniel", "Wilson", , "dan@thedatacollective.com.au", c("aut", "cre")),
     person(family = "The Data Collective Consulting Pty Ltd", role = "cph"),
@@ -10,7 +10,9 @@ Authors@R: c(
     )
 Description: Australian census data collected from the 2016 census. This package 
     contains some data provided as open data sets by the ABS.
-License: CC-BY-SA-4.0
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Depends:
+    R (>= 2.10)

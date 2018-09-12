@@ -1,8 +1,10 @@
 # censaus 0.1.01 - 2018-09-12
 
 * Added _G04 - Age by Sex_. 
-    * `census_g04_age_gender`: A dataset of age / gender by individual year to age 79
-    * `census_g04_age_gender_grouped`: A dataset of age and gender data by 5 year age bands to 100
+    * `census_g04_age_gender`: A dataset of age / gender by individual year to age 79.
+    * `census_g04_age_gender_grouped`: A dataset of age and gender data by 5 year age bands to 100.
+* Added _G38 - Dwelling Structure by Number of Bedrooms_
+    *`census_g38_dwelling_structure`: A dataset of the housing strucures and number of bedrooms in each structure.
 
 # censaus 0.1.0
 

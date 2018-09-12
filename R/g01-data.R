@@ -1,6 +1,3 @@
-#' @importFrom data.table data.table
-NULL
-
 #' census_g01_age_gender
 #'
 #' Age and gender data from the 2016 Australian census. Data is identified at
